@@ -142,7 +142,8 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
             data['Commentary']=text
             data['Result']=match_res
             ball_values.append(data)
-      with open(r"/home/scrapper/pyscrapper/"+str(date.today().year)+_num+".txt","w") as appf:
+            f_num = str(_num.replace(" ","_"))
+      with open(r"/home/scrapper/pyscrapper/"+str(date.today().year)+"/"+f_num+".txt","w") as appf:
         for ball in ball_values:
                      s = str(ball)
                      appf.write(s)
