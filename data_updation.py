@@ -102,6 +102,7 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
    try:
        cookie_button = driver.find_element(By.CLASS_NAME,"cookie__accept_btn")
        cookie_button.click()
+       print("Cookie button clicked")
    except ElementNotInteractableException:innings_num = 0
    atags_list = driver.find_elements(By.CLASS_NAME,"ap-outer-tb-wrp")
    for atags in atags_list:
@@ -186,8 +187,8 @@ if __name__ == '__main__':
     # hm_tm_aw_tm_lst.reverse()
     # lis.reverse()
     # File to save all the extracted links
-    hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 3', 'Home Team': 'Kolkata Knight Riders', 'Away Team': 'Sunrisers Hyderabad'}]
-    lis = [{'num': 'MATCH 3', 'url': 'https://www.iplt20.com/match/2024/1356'}]
+    hm_tm_aw_tm_lst = [{'Match Number': 'MATCH 50', 'Home Team': 'Sunrisers Hyderabad', 'Away Team': 'Rajasthan Royals'}]
+    lis = [{'num': 'MATCH 50', 'url': 'https://www.iplt20.com/match/2024/1432'}]
     for i in lis:
         _num = i['num']
         _url = i['url']
