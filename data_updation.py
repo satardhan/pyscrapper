@@ -143,7 +143,7 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
             data['Result']=match_res
             ball_values.append(data)
             f_num = str(_num.replace(" ","_"))
-      with open(r"/home/scrapper/pyscrapper/"+str(date.today().year)+"/"+f_num+".txt","w") as appf:
+      with open(r"/home/scrapper/pyscrapper/"+str(date.today().year)+"//"+f_num+".txt","w") as appf:
         for ball in ball_values:
                      s = str(ball)
                      appf.write(s)
@@ -191,6 +191,7 @@ if __name__ == '__main__':
         _num = i['num']
         _url = i['url']
         for ele in hm_tm_aw_tm_lst:
+            print("Starting Scrapping session")
             if ele['Match Number'] ==_num:
                 try:
                     print(ele)
@@ -207,6 +208,7 @@ if __name__ == '__main__':
                     stad_name,match_date,match_time,match_res = get_match_res(_url)
                     ball_by_ball(_num,stad_name,match_date,match_time,match_res,_url,hm_tm,aw_tm)
                 # rwf.write(_url)
+                print("Scrapping session completed")
                 # rwf.write("\n")
                 print(_num+" Data written")
                 p_end_time = time.ctime()
