@@ -182,8 +182,8 @@ if __name__ == '__main__':
     hm_tm_aw_tm_lst.reverse()
     lis.reverse()
     # File to save all the extracted links
-    hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 56', 'Home Team': 'Delhi Capitals', 'Away Team': 'Rajasthan Royals'}]
-    lis = [{'num': 'MATCH 56', 'url': 'https://www.iplt20.com/match/2024/1438'}]
+    hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 57', 'Home Team': 'Sunrisers Hyderabad', 'Away Team': 'Lucknow Super Giants'}]
+    lis = [{'num': 'MATCH 57', 'url': 'https://www.iplt20.com/match/2024/1439'}]
     with open(r'/home/scrapper/pyscrapper/data.txt','r+') as rwf:
         urls = rwf.readlines()
         url_lst = [line.rstrip() for line in urls]
