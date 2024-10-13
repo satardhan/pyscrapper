@@ -9,6 +9,9 @@ options.add_argument("--headless")  # Run in headless mode (no GUI)
 options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in Linux environments
 options.add_argument("--disable-dev-shm-usage")  # Use /tmp instead of /dev/shm to avoid memory issues
 options.add_argument("--remote-debugging-port=9222")  # Required for headless Chrome to avoid DevToolsActivePort error
+options.add_argument("--disable-gpu")  # Disable GPU hardware acceleration
+
+
 driver = webdriver.Chrome(options=options)
 
 # Configure the webdriver to use Chrome
