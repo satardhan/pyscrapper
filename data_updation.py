@@ -153,7 +153,8 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
 
 
 if __name__ == '__main__':
-
+    p_start_time = time.ctime()
+    print("Scrapper Started at", p_start_time)
     options = Options()
     options.add_argument("--headless")  # Run in headless mode (no GUI)
     options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in Linux environments
@@ -208,3 +209,6 @@ if __name__ == '__main__':
                 # rwf.write(_url)
                 # rwf.write("\n")
                 print(_num+" Data written")
+                p_end_time = time.ctime()
+                print(" Program start time is", p_start_time)
+                print(" Program start time is", p_end_time)
