@@ -5,7 +5,7 @@ from selenium.webdriver.support.expected_conditions import presence_of_all_eleme
 from selenium.webdriver.chrome.options import Options
 
 options = Options()
-options.add_argument("--headless")  # Run in headless mode (no GUI)
+# options.add_argument("--headless")  # Run in headless mode (no GUI)
 options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in Linux environments
 options.add_argument("--disable-dev-shm-usage")  # Use /tmp instead of /dev/shm to avoid memory issues
 options.add_argument("--remote-debugging-port=9222")  # Required for headless Chrome to avoid DevToolsActivePort error
