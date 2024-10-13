@@ -143,7 +143,7 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
             data['Commentary']=text
             data['Result']=match_res
             ball_values.append(data)
-      with open(r"F:\Projects\Data-scraping\IPL-Data-Scraping\2023\\"+_num+".txt","w") as appf:
+      with open(r"/home/scrapper/pyscrapper/"+str(date.today().year)+_num+".txt","w") as appf:
         for ball in ball_values:
                      s = str(ball)
                      appf.write(s)
@@ -154,11 +154,11 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
 
 if __name__ == '__main__':
     options = Options()
-    # options.add_argument('--headless')
+    options.add_argument('--headless')
     options.add_argument('--disable-gpu')
     driver = webdriver.Chrome(options=options)
     
-    lnk = 'https://www.iplt20.com/matches/results/'+'2023'
+    lnk = 'https://www.iplt20.com/matches/results/'+str(date.today().year)
     while(True):
         try:
             hm_tm_aw_tm_lst =hm_tm_aw_tm(lnk)
@@ -169,18 +169,19 @@ if __name__ == '__main__':
             driver.quit()
     lis = all_href_ext(lnk)
     # print(hm_tm_aw_tm_lst)
-    # print(lis)
-    with open(r'F:\Projects\Data-scraping\IPL-Data-Scraping\data.txt','r+') as rwf:
-        rwf.write(str(hm_tm_aw_tm_lst))
-        rwf.write("\n")
-        rwf.write(str(lis))
+    # # print(lis)
+    # Code to run the program manually
+    # with open(r'F:\Projects\Data-scraping\IPL-Data-Scraping\data.txt','r+') as rwf:
+    #     rwf.write(str(hm_tm_aw_tm_lst))
+    #     rwf.write("\n")
+    #     rwf.write(str(lis))
 
     hm_tm_aw_tm_lst.reverse()
     lis.reverse()
     # File to save all the extracted links
     hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 56', 'Home Team': 'Delhi Capitals', 'Away Team': 'Rajasthan Royals'}]
     lis = [{'num': 'MATCH 56', 'url': 'https://www.iplt20.com/match/2024/1438'}]
-    with open(r'F:\Projects\Data-scraping\IPL-Data-Scraping\data.txt','r+') as rwf:
+    with open(r'/home/scrapper/pyscrapper/data.txt','r+') as rwf:
         urls = rwf.readlines()
         url_lst = [line.rstrip() for line in urls]
         for i in lis:
