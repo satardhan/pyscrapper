@@ -185,8 +185,8 @@ if __name__ == '__main__':
     # hm_tm_aw_tm_lst.reverse()
     # lis.reverse()
     # File to save all the extracted links
-    hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 57', 'Home Team': 'Sunrisers Hyderabad', 'Away Team': 'Lucknow Super Giants'}]
-    lis = [{'num': 'MATCH 57', 'url': 'https://www.iplt20.com/match/2024/1439'}]
+    hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 35', 'Home Team': 'Delhi Capitals', 'Away Team': 'Sunrisers Hyderabad'}]
+    lis = [{'num': 'MATCH 35', 'url': 'https://www.iplt20.com/match/2024/1417'}]
     for i in lis:
         _num = i['num']
         _url = i['url']
