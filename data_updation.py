@@ -117,6 +117,7 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
          ball_elements = wait.until(presence_of_all_elements_located((By.CSS_SELECTOR, "p.cmdOver.mcBall")))
          commentary_start = wait.until(presence_of_all_elements_located((By.CSS_SELECTOR, "div.commentaryStartText.ng-binding.ng-scope")))
          commentary_text = wait.until(presence_of_all_elements_located((By.CSS_SELECTOR, "div.commentaryText.ng-binding")))
+         print(innings_num," Innings Data loaded", time.ctime())
          for i in range(len(ball_elements)):
             data = {}
             ball_number = ball_elements[i].text.split('\n')[0]
@@ -185,8 +186,8 @@ if __name__ == '__main__':
     # hm_tm_aw_tm_lst.reverse()
     # lis.reverse()
     # File to save all the extracted links
-    hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 35', 'Home Team': 'Delhi Capitals', 'Away Team': 'Sunrisers Hyderabad'}]
-    lis = [{'num': 'MATCH 35', 'url': 'https://www.iplt20.com/match/2024/1417'}]
+    hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 3', 'Home Team': 'Kolkata Knight Riders', 'Away Team': 'Sunrisers Hyderabad'}]
+    lis = [{'num': 'MATCH 3', 'url': 'https://www.iplt20.com/match/2024/1356'}]
     for i in lis:
         _num = i['num']
         _url = i['url']
