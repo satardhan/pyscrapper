@@ -158,59 +158,52 @@ if __name__ == '__main__':
     options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in Linux environments
     options.add_argument("--disable-dev-shm-usage")  # Use /tmp instead of /dev/shm to avoid memory issues
     options.add_argument("--remote-debugging-port=9222")  # Required for headless Chrome to avoid DevToolsActivePort error
-# Old statement working in windows
     driver = webdriver.Chrome(options=options)
     
-    lnk = 'https://www.iplt20.com/matches/results/'+str(date.today().year)
-    while(True):
-        try:
-            hm_tm_aw_tm_lst =hm_tm_aw_tm(lnk)
-            if len(hm_tm_aw_tm_lst)> 0:
-                break
-        except TypeError:
-            print("Error")
-            driver.quit()
-    lis = all_href_ext(lnk)
+    # All available links
+    # lnk = 'https://www.iplt20.com/matches/results/'+str(date.today().year)
+    # while(True):
+    #     try:
+    #         hm_tm_aw_tm_lst =hm_tm_aw_tm(lnk)
+    #         if len(hm_tm_aw_tm_lst)> 0:
+    #             break
+    #     except TypeError:
+    #         print("Error")
+    #         driver.quit()
+    # lis = all_href_ext(lnk)
     # print(hm_tm_aw_tm_lst)
     # # print(lis)
+    
     # Code to run the program manually
     # with open(r'F:\Projects\Data-scraping\IPL-Data-Scraping\data.txt','r+') as rwf:
     #     rwf.write(str(hm_tm_aw_tm_lst))
     #     rwf.write("\n")
     #     rwf.write(str(lis))
 
-    hm_tm_aw_tm_lst.reverse()
-    lis.reverse()
+    # hm_tm_aw_tm_lst.reverse()
+    # lis.reverse()
     # File to save all the extracted links
     hm_tm_aw_tm_lst = [ {'Match Number': 'MATCH 57', 'Home Team': 'Sunrisers Hyderabad', 'Away Team': 'Lucknow Super Giants'}]
     lis = [{'num': 'MATCH 57', 'url': 'https://www.iplt20.com/match/2024/1439'}]
-    with open(r'/home/scrapper/pyscrapper/data.txt','r+') as rwf:
-        urls = rwf.readlines()
-        url_lst = [line.rstrip() for line in urls]
-        for i in lis:
-            _num = i['num']
-            _url = i['url']
-            # print(_url)
-            if _url in url_lst:
-                print(_url)
-                continue
-            for ele in hm_tm_aw_tm_lst:
-                if ele['Match Number'] ==_num:
-                    try:
-                        print(ele)
-                        # input()
-                        hm_tm = ele['Home Team']
-                        aw_tm = ele['Away Team']
-                        stad_name,match_date,match_time,match_res = get_match_res(_url)
-                        ball_by_ball(_num,stad_name,match_date,match_time,match_res,_url,hm_tm,aw_tm)
-                    except ElementNotInteractableException:
-                        driver.quit()
-                        driver = webdriver.Chrome(options=options)
-                        hm_tm = ele['Home Team']
-                        aw_tm = ele['Away Team']
-                        stad_name,match_date,match_time,match_res = get_match_res(_url)
-                        ball_by_ball(_num,stad_name,match_date,match_time,match_res,_url,hm_tm,aw_tm)
-                    # rwf.write(_url)
-                    # rwf.write("\n")
-                    print(_num+" Data written")
+    for i in lis:
+        _num = i['num']
+        _url = i['url']
+        for ele in hm_tm_aw_tm_lst:
+            if ele['Match Number'] ==_num:
+                try:
+                    print(ele)
                     # input()
+                    hm_tm = ele['Home Team']
+                    aw_tm = ele['Away Team']
+                    stad_name,match_date,match_time,match_res = get_match_res(_url)
+                    ball_by_ball(_num,stad_name,match_date,match_time,match_res,_url,hm_tm,aw_tm)
+                except ElementNotInteractableException:
+                    driver.quit()
+                    driver = webdriver.Chrome(options=options)
+                    hm_tm = ele['Home Team']
+                    aw_tm = ele['Away Team']
+                    stad_name,match_date,match_time,match_res = get_match_res(_url)
+                    ball_by_ball(_num,stad_name,match_date,match_time,match_res,_url,hm_tm,aw_tm)
+                # rwf.write(_url)
+                # rwf.write("\n")
+                print(_num+" Data written")
