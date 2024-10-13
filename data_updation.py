@@ -10,7 +10,6 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementNotInteractableException
 
-
 def all_href_ext(url):
     lis =[]
     driver.get(url)
@@ -153,9 +152,13 @@ def ball_by_ball(_num,stad_name,match_date,match_time,match_res,url,hm_tm,aw_tm)
 
 
 if __name__ == '__main__':
+
     options = Options()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
+    options.add_argument("--headless")  # Run in headless mode (no GUI)
+    options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in Linux environments
+    options.add_argument("--disable-dev-shm-usage")  # Use /tmp instead of /dev/shm to avoid memory issues
+    options.add_argument("--remote-debugging-port=9222")  # Required for headless Chrome to avoid DevToolsActivePort error
+# Old statement working in windows
     driver = webdriver.Chrome(options=options)
     
     lnk = 'https://www.iplt20.com/matches/results/'+str(date.today().year)
