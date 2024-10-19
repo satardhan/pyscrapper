@@ -2,6 +2,7 @@ import time
 from datetime import date
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as Ec
@@ -158,10 +159,14 @@ if __name__ == '__main__':
     p_start_time = time.ctime()
     print("Scrapper Started at", p_start_time)
     options = Options()
-    options.add_argument("--headless")  # Run in headless mode (no GUI)
-    options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in Linux environments
-    options.add_argument("--disable-dev-shm-usage")  # Use /tmp instead of /dev/shm to avoid memory issues
-    options.add_argument("--remote-debugging-port=9222")  # Required for headless Chrome to avoid DevToolsActivePort error
+    # options.add_argument("--headless")  # Run in headless mode (no GUI)
+    # options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in Linux environments
+    # options.add_argument("--disable-dev-shm-usage")  # Use /tmp instead of /dev/shm to avoid memory issues
+    # options.add_argument("--remote-debugging-port=9222")  # Required for headless Chrome to avoid DevToolsActivePort error
+    options.binary_location = "/usr/bin/chromium-browser"
+    options.add_argument("--headless")  # Optional: Run headless
+    service = Service("/usr/local/bin/chromedriver")  # Make sure ChromeDriver is installed
+    driver = webdriver.Chrome(service=service, options=options)
     driver = webdriver.Chrome(options=options)
     
     # All available links
